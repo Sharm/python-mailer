@@ -8,6 +8,7 @@ from datetime import datetime
 # file settings
 LOG_FILENAME        = 'log/pymailer-%s.log' % str(datetime.now()).replace(' ', '-').replace(':', '-').replace('.', '-')
 CSV_RETRY_FILENAME  = 'log/retry.csv'
+CSV_BAD_EMAILS_FILENAME = 'log/bad_emails-%s.csv' % str(datetime.now()).replace(' ', '-').replace(':', '-').replace('.', '-')
 STATS_FILE          = 'log/pymailer-%s.stat' % str(datetime.now()).replace(' ', '-').replace(':', '-').replace('.', '-')
 
 # smtp settings

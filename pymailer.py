@@ -132,10 +132,16 @@ class PyMailer():
         except IOError:
             raise IOError("Invalid or missing csv file path.")
 
+        try:
+            bad_emails_csv_file = open(config.CSV_BAD_EMAILS_FILENAME, 'w', encoding='utf-8', newline='')
+        except IOError:
+            raise IOError("Invalid or missing bad emails csv file path.")
+
         csv_reader = csv.reader(csv_file)
+        bad_emails_writer = csv.writer(bad_emails_csv_file)
 
         """
-        Invalid emails ignored
+        Invalid emails writes to file with path: bad_emails_csv_path
         """
         variables_names = []
         recipients_list = []
@@ -153,6 +159,9 @@ class PyMailer():
                     if self._validate_email(row[j]):
                         variables[var_name] = row[j]
                         recipients_list.append(variables)
+                    else:
+                        bad_emails_writer.writerow(row[j])
+
                 else:
                     variables[var_name] = row[j]
 
@@ -161,6 +170,7 @@ class PyMailer():
             csv_file.write('')
 
         csv_file.close()
+        bad_emails_writer.close()
 
         return recipients_list
 
