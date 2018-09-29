@@ -18,6 +18,9 @@ SMTP_USER     = '' # Leave empty if not needed
 SMTP_PASSWORD = '' # Leave empty if not needed
 ENCRYPT_MODE  = 'none' # Choose between 'none', 'ssl' and 'starttls'
 
+# delay between email send (sec)
+SEND_DELAY = 0.5
+
 # the address and name the email comes from
 FROM_NAME = 'Company Name'
 FROM_EMAIL = 'company@example.com'

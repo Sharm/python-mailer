@@ -230,7 +230,7 @@ class PyMailer():
                     self._stats("LAST RECIPIENT: %s" % recipient_data.get('recipient'))
 
                     # allow the system to sleep for .25 secs to take load off the SMTP server
-                    sleep(1)
+                    sleep(config.SEND_DELAY)
                 except smtplib.SMTPException as e:
                     print("EXCEPTION")
                     print(repr(e))
