@@ -114,6 +114,8 @@ class PyMailer():
         # instatiate the email object and assign headers
         email_message = MIMEText(html_content, 'html')
         email_message['From'] = recipient_data.get('sender')
+        if recipient_data['reply-to']:
+            email_message['Reply-To'] = recipient_data.get('reply-to')
         email_message['To'] = recipient_data.get('recipient')
         email_message['Subject'] = self.subject
 
@@ -201,6 +203,8 @@ class PyMailer():
                 recipient_data['recipient'] = recipient_data.get('email')
 
             recipient_data['sender'] = "%s <%s>" % (self.from_name, self.from_email)
+            if config.REPLYTO_EMAIL:
+                recipient_data['reply-to'] = "%s <%s>" % (config.REPLYTO_NAME, config.REPLYTO_EMAIL)
 
             # instantiate the required vars to send email
             message = self._form_email(recipient_data)

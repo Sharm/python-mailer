@@ -24,6 +24,8 @@ SEND_DELAY = 0.5
 # the address and name the email comes from
 FROM_NAME = 'Company Name'
 FROM_EMAIL = 'company@example.com'
+REPLYTO_NAME = ''
+REPLYTO_EMAIL = ''
 
 # The number of emails to send to each recipient
 NB_EMAILS_PER_RECIPIENT = 1
